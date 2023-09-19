@@ -1,5 +1,6 @@
 package graficos;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
 
@@ -132,8 +133,21 @@ class LaminaProcesador_II extends JPanel{
 	
 		JButton cursivaBarra=new JButton(new ImageIcon("bin/graficos/cursiva.gif"));
 	
-		JButton subraBarra=new JButton(new ImageIcon("bin/graficos/cursiva.gif"));
+		JButton subraBarra=new JButton(new ImageIcon("src/graficos/subrayar.gif"));
 		
+		JButton azulBarra=new JButton(new ImageIcon("src/graficos/bola_azul.gif"));
+		
+		JButton amarilloBarra=new JButton(new ImageIcon("src/graficos/bola_amarilla.gif"));
+		
+		JButton rojoBarra=new JButton(new ImageIcon("src/graficos/bola_roja.gif"));
+		
+		JButton a_izquierda=new JButton(new ImageIcon("src/graficos/izquierda.gif"));
+		
+		JButton a_centrado=new JButton(new ImageIcon("src/graficos/centrado.gif"));
+		
+		JButton a_derecha=new JButton(new ImageIcon("src/graficos/derecha.gif"));
+		
+		JButton a_justificado=new JButton(new ImageIcon("src/graficos/justificado.gif"));
 		
 		negritaBarra.addActionListener(new StyledEditorKit.BoldAction());
 		
@@ -141,11 +155,39 @@ class LaminaProcesador_II extends JPanel{
 		
 		subraBarra.addActionListener(new StyledEditorKit.UnderlineAction());
 		
+		azulBarra.addActionListener(new StyledEditorKit.ForegroundAction("Poner azul", Color.BLUE));
+		
+		amarilloBarra.addActionListener(new StyledEditorKit.ForegroundAction("Poner amarillo", Color.YELLOW));
+		
+		rojoBarra.addActionListener(new StyledEditorKit.ForegroundAction("Poner rojo", Color.RED));
+		
+		a_izquierda.addActionListener(new StyledEditorKit.AlignmentAction("izquierdo", 0));
+		
+		a_centrado.addActionListener(new StyledEditorKit.AlignmentAction("centrado", 1));
+		
+		a_derecha.addActionListener(new StyledEditorKit.AlignmentAction("derecha", 2));
+		
+		a_justificado.addActionListener(new StyledEditorKit.AlignmentAction("justificado", 3));
+		
 		barra.add(negritaBarra);
 		
 		barra.add(cursivaBarra);
 		
 		barra.add(subraBarra);
+		
+		barra.add(azulBarra);
+		
+		barra.add(amarilloBarra);
+		
+		barra.add(rojoBarra);
+		
+		barra.add(a_izquierda);
+		
+		barra.add(a_centrado);
+		
+		barra.add(a_derecha);
+		
+		barra.add(a_justificado);
 		
 		barra.setOrientation(1);
 		
