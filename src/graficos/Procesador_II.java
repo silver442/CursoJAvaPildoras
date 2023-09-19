@@ -124,6 +124,32 @@ class LaminaProcesador_II extends JPanel{
 		
 		miarea.setComponentPopupMenu(emergente);
 		
+		//----------------------------------------------------------------------
+		
+		JToolBar barra=new JToolBar();
+		
+		JButton negritaBarra=new JButton(new ImageIcon("bin/graficos/Negrita.gif"));
+	
+		JButton cursivaBarra=new JButton(new ImageIcon("bin/graficos/cursiva.gif"));
+	
+		JButton subraBarra=new JButton(new ImageIcon("bin/graficos/cursiva.gif"));
+		
+		
+		negritaBarra.addActionListener(new StyledEditorKit.BoldAction());
+		
+		cursivaBarra.addActionListener(new StyledEditorKit.ItalicAction());
+		
+		subraBarra.addActionListener(new StyledEditorKit.UnderlineAction());
+		
+		barra.add(negritaBarra);
+		
+		barra.add(cursivaBarra);
+		
+		barra.add(subraBarra);
+		
+		barra.setOrientation(1);
+		
+		add(barra, BorderLayout.WEST);
 	
 	}
 	
