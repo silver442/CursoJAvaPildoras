@@ -127,72 +127,46 @@ class LaminaProcesador_II extends JPanel{
 		
 		//----------------------------------------------------------------------
 		
-		JToolBar barra=new JToolBar();
+		barra=new JToolBar();
 		
-		JButton negritaBarra=new JButton(new ImageIcon("bin/graficos/Negrita.gif"));
-	
-		JButton cursivaBarra=new JButton(new ImageIcon("bin/graficos/cursiva.gif"));
-	
-		JButton subraBarra=new JButton(new ImageIcon("src/graficos/subrayar.gif"));
+		configura_barra("bin/graficos/Negrita.gif").addActionListener(new StyledEditorKit.BoldAction());
 		
-		JButton azulBarra=new JButton(new ImageIcon("src/graficos/bola_azul.gif"));
+		configura_barra("bin/graficos/cursiva.gif").addActionListener(new StyledEditorKit.ItalicAction());
 		
-		JButton amarilloBarra=new JButton(new ImageIcon("src/graficos/bola_amarilla.gif"));
+		configura_barra("src/graficos/subrayar.gif").addActionListener(new StyledEditorKit.UnderlineAction());
 		
-		JButton rojoBarra=new JButton(new ImageIcon("src/graficos/bola_roja.gif"));
+		barra.addSeparator();
 		
-		JButton a_izquierda=new JButton(new ImageIcon("src/graficos/izquierda.gif"));
+		configura_barra("src/graficos/bola_azul.gif").addActionListener(new StyledEditorKit.ForegroundAction("Poner azul", Color.BLUE));
 		
-		JButton a_centrado=new JButton(new ImageIcon("src/graficos/centrado.gif"));
+		configura_barra("src/graficos/bola_roja.gif").addActionListener(new StyledEditorKit.ForegroundAction("Poner rojo", Color.RED));
 		
-		JButton a_derecha=new JButton(new ImageIcon("src/graficos/derecha.gif"));
+		configura_barra("src/graficos/bola_amarilla.gif").addActionListener(new StyledEditorKit.ForegroundAction("Poner amarillo", Color.YELLOW));
 		
-		JButton a_justificado=new JButton(new ImageIcon("src/graficos/justificado.gif"));
+		barra.addSeparator();
 		
-		negritaBarra.addActionListener(new StyledEditorKit.BoldAction());
+		configura_barra("src/graficos/izquierda.gif").addActionListener(new StyledEditorKit.AlignmentAction("izquierdo", 0));
 		
-		cursivaBarra.addActionListener(new StyledEditorKit.ItalicAction());
+		configura_barra("src/graficos/centrado.gif").addActionListener(new StyledEditorKit.AlignmentAction("centrado", 1));
 		
-		subraBarra.addActionListener(new StyledEditorKit.UnderlineAction());
+		configura_barra("src/graficos/derecha.gif").addActionListener(new StyledEditorKit.AlignmentAction("derecha", 2));
 		
-		azulBarra.addActionListener(new StyledEditorKit.ForegroundAction("Poner azul", Color.BLUE));
+		configura_barra("src/graficos/justificado.gif").addActionListener(new StyledEditorKit.AlignmentAction("justificado", 3));
 		
-		amarilloBarra.addActionListener(new StyledEditorKit.ForegroundAction("Poner amarillo", Color.YELLOW));
-		
-		rojoBarra.addActionListener(new StyledEditorKit.ForegroundAction("Poner rojo", Color.RED));
-		
-		a_izquierda.addActionListener(new StyledEditorKit.AlignmentAction("izquierdo", 0));
-		
-		a_centrado.addActionListener(new StyledEditorKit.AlignmentAction("centrado", 1));
-		
-		a_derecha.addActionListener(new StyledEditorKit.AlignmentAction("derecha", 2));
-		
-		a_justificado.addActionListener(new StyledEditorKit.AlignmentAction("justificado", 3));
-		
-		barra.add(negritaBarra);
-		
-		barra.add(cursivaBarra);
-		
-		barra.add(subraBarra);
-		
-		barra.add(azulBarra);
-		
-		barra.add(amarilloBarra);
-		
-		barra.add(rojoBarra);
-		
-		barra.add(a_izquierda);
-		
-		barra.add(a_centrado);
-		
-		barra.add(a_derecha);
-		
-		barra.add(a_justificado);
 		
 		barra.setOrientation(1);
 		
 		add(barra, BorderLayout.WEST);
 	
+	}
+	
+	public JButton configura_barra(String ruta) {
+		
+		JButton boton = new JButton(new ImageIcon(ruta));
+		
+		barra.add(boton);
+		
+		return boton;
 	}
 	
 	public void configura_menu(String rotulo, String menu, String tipo_letra, int estilos, int tam, String ruta_icono) {
@@ -242,12 +216,14 @@ class LaminaProcesador_II extends JPanel{
 		}
 	}
 	
-	
-	
-	
 	JTextPane miarea;
 
 	JMenu fuente, estilo, tamagno;
 
 	Font letras;
+	
+	JButton negritaBarra, cursivaBarra, subraBarra, azulBarra, rojoBarra, amarilloBarra, a_izquierda, a_centrado, a_derecha, a_justificado;
+
+	JToolBar barra;
+		
 }
