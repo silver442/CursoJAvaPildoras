@@ -18,7 +18,7 @@ class MarcoLibre extends JFrame{
 	
 	public MarcoLibre() {
 		
-		setBounds(450, 350,600,400);
+		setBounds(450, 350,500,400);
 
 		LaminaLibre milamina=new LaminaLibre();
 		
@@ -41,12 +41,15 @@ class LaminaLibre extends JPanel{
 		
 		JLabel edad=new JLabel("Edad: ");
 		
+		JLabel telefono=new JLabel("telefono: ");
+		
 		JTextField c_nombre=new JTextField(10);
 		
 		JTextField c_apellido=new JTextField(10);
 		
 		JTextField c_edad=new JTextField(10);
 		
+		JTextField c_telefono=new JTextField(10);
 		/*nombre.setBounds(20, 20, 80, 10);
 		
 		c_nombre.setBounds(100, 17, 100, 20);
@@ -66,6 +69,10 @@ class LaminaLibre extends JPanel{
 		add(edad);
 		
 		add(c_edad);
+		
+		add(telefono);
+		
+		add(c_telefono);
 	}
 }
 
@@ -99,6 +106,10 @@ class EnColumnas implements LayoutManager{
 	public void layoutContainer(Container micontenedor) {
 		// TODO Auto-generated method stub
 	
+		int d=micontenedor.getWidth(); //Almacena las dimensiones del contenedor
+		
+		x=d/2;
+		
 		int contador=0;
 		
 		int n=micontenedor.getComponentCount();
@@ -109,13 +120,13 @@ class EnColumnas implements LayoutManager{
 			
 			Component c=micontenedor.getComponent(i);
 			
-			c.setBounds(x, y, 100, 20);
+			c.setBounds(x-100, y, 100, 20);
 			
 			x+=100;
 			
 			if(contador % 2 == 0) {
 				
-				x=20;
+				x=d/2;
 				
 				y+=40;
 				
@@ -125,7 +136,7 @@ class EnColumnas implements LayoutManager{
 		
 	}
 	
-	private int x=20;
+	private int x;
 	
 	private int y=20;
 	
