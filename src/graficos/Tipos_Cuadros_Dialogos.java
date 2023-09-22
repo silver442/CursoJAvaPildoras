@@ -72,15 +72,18 @@ class Lamina_Cuadros_Dialogos extends JPanel{
 				//System.out.println("Has pulsado el botón 2");
 				
 				JOptionPane.showInputDialog(Lamina_Cuadros_Dialogos.this, "Introduce nombre: ","Introduce datos", 2);
-				
-				
+								
 			}else if(e.getSource()==boton3) {
 			
-				System.out.println("Has pulsado el botón 3");
+				//System.out.println("Has pulsado el botón 3");
+				
+				JOptionPane.showConfirmDialog(Lamina_Cuadros_Dialogos.this, "Elige opcion", "V Confirmar", 0);
 				
 			}else{
 			
-				System.out.println("Has pulsado el botón 4");
+				//System.out.println("Has pulsado el botón 4");
+				
+				JOptionPane.showOptionDialog(Lamina_Cuadros_Dialogos.this, "Elige", "V de opciones", 1, 1, null , null, null);
 				
 			}	
 		}
