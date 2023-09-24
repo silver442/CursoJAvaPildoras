@@ -95,8 +95,22 @@ public class Marco_Dialogos extends JFrame {
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 		
-			System.out.println(lamina_tipo_mensajes.dameSeleccion());
+			//System.out.println(lamina_tipo.dameSeleccion());
 	
+			if(lamina_tipo.dameSeleccion().equals("Mensaje")) {
+				
+				JOptionPane.showMessageDialog(Marco_Dialogos.this, "Mensaje", "Titulo", 0);
+				
+			}else if(lamina_tipo.dameSeleccion().equals("Confirmar")) {
+				
+				JOptionPane.showConfirmDialog(Marco_Dialogos.this, "Mensaje", "Titulo", 0, 0);
+			}else if(lamina_tipo.dameSeleccion().equals("Entrada")) {
+				
+				JOptionPane.showInputDialog(Marco_Dialogos.this, "Mensaje", "Titulo", 0);
+			}else if(lamina_tipo.dameSeleccion().equals("Opción")) {
+				
+				JOptionPane.showOptionDialog(Marco_Dialogos.this, "Mensaje", "Titulo", 0, 0, null, null, null);
+			}
 		}
 		
 	}
