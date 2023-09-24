@@ -2,6 +2,8 @@ package practicas;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.Rectangle2D;
+import java.util.Date;
 
 import javax.swing.*;
 
@@ -89,6 +91,42 @@ public class Marco_Dialogos extends JFrame {
 		
 	}	
 	
+	// --------------------------	PROPORCIONA ELMENSAJE --------------------------------------------
+	
+	public Object dameMensaje() {
+		
+		String s=lamina_mensaje.dameSeleccion();
+		
+		if(s.equals("Cadena")) {
+			
+			return cadenaMensaje;
+			
+		}else if(s.equals("Icono")) {
+			
+			return iconoMensaje;
+			
+		}else if(s.equals("Componente")){
+		
+			return componenteMensaje;
+		}else if(s.equals("Otros")) {
+			
+			return objetoMensaje;
+			
+		}else if(s.equals("Object[]")) {
+			
+			return new Object[] {cadenaMensaje,
+					iconoMensaje,
+					componenteMensaje,
+					objetoMensaje
+					
+			};
+		}else {
+			return null;
+		}		
+	}
+	
+	// --------------------------------------------------------------------------
+	
 	public class AccionMostrar implements ActionListener{
 
 		@Override
@@ -99,21 +137,44 @@ public class Marco_Dialogos extends JFrame {
 	
 			if(lamina_tipo.dameSeleccion().equals("Mensaje")) {
 				
-				JOptionPane.showMessageDialog(Marco_Dialogos.this, "Mensaje", "Titulo", 0);
+				JOptionPane.showMessageDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0);
 				
 			}else if(lamina_tipo.dameSeleccion().equals("Confirmar")) {
 				
-				JOptionPane.showConfirmDialog(Marco_Dialogos.this, "Mensaje", "Titulo", 0, 0);
+				JOptionPane.showConfirmDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0, 0);
 			}else if(lamina_tipo.dameSeleccion().equals("Entrada")) {
 				
-				JOptionPane.showInputDialog(Marco_Dialogos.this, "Mensaje", "Titulo", 0);
+				JOptionPane.showInputDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0);
 			}else if(lamina_tipo.dameSeleccion().equals("Opción")) {
 				
-				JOptionPane.showOptionDialog(Marco_Dialogos.this, "Mensaje", "Titulo", 0, 0, null, null, null);
+				JOptionPane.showOptionDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0, 0, null, null, null);
 			}
 		}
 		
 	}
 	
 	private Lamina_Botones lamina_tipo, lamina_tipo_mensajes, lamina_mensaje, lamina_tipo_opcion, lamina_opciones, lamina_entrada;
+
+	private String cadenaMensaje="Mensaje";
+	private Icon iconoMensaje=new ImageIcon("src/practicas/bola_azul.gif");
+	private Object objetoMensaje=new Date();
+	private Component componenteMensaje=new Lamina_Ejemplo();
+
+}
+
+class Lamina_Ejemplo extends JPanel{
+	
+	public void paintComponent(Graphics g) {
+		
+		super.paintComponents(g);
+		
+		Graphics2D g2=(Graphics2D) g;
+		
+		Rectangle2D rectangulo=new Rectangle2D.Double(0,0,getWidth(), getHeight());
+		
+		g2.setPaint(Color.YELLOW);
+		
+		g2.fill(rectangulo);
+	}
+	
 }
