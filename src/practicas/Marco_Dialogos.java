@@ -27,6 +27,7 @@ public class Marco_Dialogos extends JFrame {
 				
 				"ERROR_MESSAGE",
 				"INFORMATION_MENSSAGE",
+				"WARNING_MESSAGE",
 				"QUESTION_MESSAGE",
 				"PLAIN_MESSEGE"
 		
@@ -125,6 +126,39 @@ public class Marco_Dialogos extends JFrame {
 		}		
 	}
 	
+	//------------------------------	DEVUELVE TIPO ICONO-----------------------------------
+	
+	public int dameIcono() {
+		
+		String s=lamina_tipo_mensajes.dameSeleccion();
+		
+		if(s.equals("ERROR_MESSAGE")) {
+			
+			return 0;
+					
+		}else if(s.equals("INFORMATION_MENSSAGE")) {
+			
+			return 1;
+			
+		}else if(s.equals("WARNING_MESSAGE")) {
+			
+			return 2;
+			
+		}else if(s.equals("QUESTION_MESSAGE")) {
+			
+			return 3;
+			
+		}else if(s.equals("PLAIN_MESSEGE")){
+			
+			return -1;
+			
+		}
+		else {
+			
+			return 0;
+		}
+	}
+	
 	// --------------------------------------------------------------------------
 	
 	public class AccionMostrar implements ActionListener{
@@ -137,17 +171,17 @@ public class Marco_Dialogos extends JFrame {
 	
 			if(lamina_tipo.dameSeleccion().equals("Mensaje")) {
 				
-				JOptionPane.showMessageDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0);
+				JOptionPane.showMessageDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", dameIcono());
 				
 			}else if(lamina_tipo.dameSeleccion().equals("Confirmar")) {
 				
-				JOptionPane.showConfirmDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0, 0);
+				JOptionPane.showConfirmDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0, dameIcono());
 			}else if(lamina_tipo.dameSeleccion().equals("Entrada")) {
 				
-				JOptionPane.showInputDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0);
+				JOptionPane.showInputDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", dameIcono());
 			}else if(lamina_tipo.dameSeleccion().equals("Opción")) {
 				
-				JOptionPane.showOptionDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0, 0, null, null, null);
+				JOptionPane.showOptionDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0, dameIcono(), null, null, null);
 			}
 		}
 		
