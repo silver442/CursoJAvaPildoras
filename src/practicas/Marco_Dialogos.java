@@ -1,6 +1,7 @@
 package practicas;
 
 import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
 
@@ -78,6 +79,8 @@ public class Marco_Dialogos extends JFrame {
 		
 		JButton boton_mostrar=new JButton("Mostrar");
 		
+		boton_mostrar.addActionListener(new AccionMostrar());
+		
 		lamina_mostrar.add(boton_mostrar);
 		
 		add(lamina_mostrar, BorderLayout.SOUTH);
@@ -85,6 +88,18 @@ public class Marco_Dialogos extends JFrame {
 		add(lamina_cuadricula, BorderLayout.CENTER);
 		
 	}	
+	
+	public class AccionMostrar implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+		
+			System.out.println(lamina_tipo_mensajes.dameSeleccion());
+	
+		}
+		
+	}
 	
 	private Lamina_Botones lamina_tipo, lamina_tipo_mensajes, lamina_mensaje, lamina_tipo_opcion, lamina_opciones, lamina_entrada;
 }

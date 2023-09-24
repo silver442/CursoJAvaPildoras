@@ -9,11 +9,13 @@ public class Lamina_Botones extends JPanel {
 		
 		setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 		
-		ButtonGroup grupo=new ButtonGroup();
+		grupo =new ButtonGroup();
 		
 		for (int i=0; i<opciones.length; i++) {
 			
 			JRadioButton bot=new JRadioButton(opciones[i]);
+			
+			bot.setActionCommand(opciones[i]);
 			
 			add(bot);
 			
@@ -21,8 +23,19 @@ public class Lamina_Botones extends JPanel {
 			
 			bot.setSelected(i==0);
 			
-		}
-		
+		}	
 	}
 	
+	public String dameSeleccion() {
+		/*
+		ButtonModel miboton=grupo.getSelection();
+		
+		String s=miboton.getActionCommand(); //Devuelve el string
+		
+		return s;*/
+		
+		return grupo.getSelection().getActionCommand();
+	}
+	
+	private ButtonGroup grupo;
 }
