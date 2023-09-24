@@ -16,5 +16,15 @@ public class Marco_Dialogos extends JFrame {
 		
 		lamina_cuadricula.setLayout(new GridLayout(2,3));
 		
+		String primero[]= {"Mensaje", "Confirmar", "Opción", "Entrada"};
+
+		lamina_tipo=new Lamina_Botones("Tipo", primero);
+		
+		lamina_cuadricula.add(lamina_tipo);
+		
+		add(lamina_cuadricula);
+		
 	}	
+	
+	private Lamina_Botones lamina_tipo;
 }
