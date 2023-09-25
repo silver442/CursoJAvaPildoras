@@ -159,6 +159,31 @@ public class Marco_Dialogos extends JFrame {
 		}
 	}
 	
+	//-------------------------------- DA OPCIONES A LA LÁMINA OPCION --------------
+	
+	public Object[] dameOpciones(Lamina_Botones lamina) {
+		
+		String s= lamina.dameSeleccion();
+		
+		if(s.equals("String[ ]")) {
+			
+			return new String[] {"Amarillo", "Azul", "Rojo"};
+		}else if(s.equals("Icon[ ]")) {
+			return new Object[] {new ImageIcon("src/practicas/bola_azul.gif"), new ImageIcon("src/practicas/bola_amarilla.gif"), new ImageIcon("src/practicas/bola_roja.gif")};
+		}else if(s.equals("Object[ ]")) {
+			return new Object[] {cadenaMensaje,
+					iconoMensaje,
+					componenteMensaje,
+					objetoMensaje
+			};
+		}
+		else {
+			return null;
+		}
+		
+	}
+	
+	
 	// --------------------------------------------------------------------------
 	
 	public class AccionMostrar implements ActionListener{
@@ -178,12 +203,20 @@ public class Marco_Dialogos extends JFrame {
 				JOptionPane.showConfirmDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", dameTipo(lamina_tipo_opcion), dameTipo(lamina_tipo_mensajes));
 		
 			}else if(lamina_tipo.dameSeleccion().equals("Entrada")) {
-				
-				JOptionPane.showInputDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", dameTipo(lamina_tipo_mensajes));
 			
+				if(lamina_entrada.dameSeleccion().equals("Campo de texto")){
+					
+					JOptionPane.showInputDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", dameTipo(lamina_tipo_mensajes));
+					
+				}else {
+					
+					JOptionPane.showInputDialog(Marco_Dialogos.this, dameMensaje(),"Titulo", dameTipo(lamina_tipo_mensajes), null, new String[] {"Amarrillo", "Azul","Rojo"}, "Azul");
+					
+				}
+				
 			}else if(lamina_tipo.dameSeleccion().equals("Opción")) {
 				
-				JOptionPane.showOptionDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 0, dameTipo(lamina_tipo_mensajes), null, null, null);
+				JOptionPane.showOptionDialog(Marco_Dialogos.this, dameMensaje(), "Titulo", 1, dameTipo(lamina_tipo_mensajes), null, dameOpciones(lamina_opciones), null);
 			}
 		}
 		
